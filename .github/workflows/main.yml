@@ -1,8 +1,8 @@
-name: Hello W
+name: Hello Wu
 
 on:
   workflow_dispatch:
-  push:           # → otomatis jalan saat ada push
+  push:
     branches:
       - main
 
