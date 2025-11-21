@@ -1,7 +1,10 @@
-name: Hello
+name: Hello W
 
 on:
   workflow_dispatch:
+  push:           # → otomatis jalan saat ada push
+    branches:
+      - main
 
 jobs:
   hello:
@@ -11,7 +14,18 @@ jobs:
         id: [1,2,3,4,5,6,7,8,9,10]
 
     steps:
-      - name: Echo Hello World with Random 6 chars
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # tarik semua history supaya bisa reset bersih
+
+      - name: Ensure no local file changes
+        run: |
+            git reset --hard HEAD
+            git clean -fdx
+            echo "Repo cleaned"
+
+      - name: Echo Hello World with Random 6 Chars
         run: |
           RAND=$(tr -dc 'a-zA-Z0-9' </dev/urandom | head -c 6)
           echo "hello world $RAND"
