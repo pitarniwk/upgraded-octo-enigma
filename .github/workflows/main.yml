@@ -1,4 +1,4 @@
-name: Hello Wut
+name: Hello Wuty
 
 on:
   workflow_dispatch:
