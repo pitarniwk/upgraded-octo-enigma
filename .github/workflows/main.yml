@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        id: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        id: [1,2,3,4,5,6,7,8,9,10]
 
     steps:
       - name: Echo Hello World with Random 6 chars
         run: |
           RAND=$(tr -dc 'a-zA-Z0-9' </dev/urandom | head -c 6)
           echo "hello world $RAND"
-          sleep 5m
